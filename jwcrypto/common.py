@@ -23,11 +23,7 @@ def base64url_decode(payload):
         payload += '='
     elif size != 0:
         raise ValueError('Invalid base64 string')
-    try:
-        return urlsafe_b64decode(payload.encode('utf'))
-    except (UnicodeDecodeError):
-        return payload
-
+    return urlsafe_b64decode(payload.encode('utf'))
 
 
 

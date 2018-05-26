@@ -1240,7 +1240,7 @@ class BytestringTests(unittest.TestCase):
         payload = "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..hCm3EgHHMsnH5Xrd.NwCKEDreWGmTGCpPgWc.HhQ5QlE307KrKOFQkFjTgw"
         jwetoken = jwe.JWE()
         jwetoken.deserialize(payload)
-        key = jwk.JWK(kty='oct', k=hashed_secret)
+        key = jwk.JWK(kty='oct', k=base64url_encode(hashed_secret))
         jwetoken.decrypt(key)
         payload = jwetoken.payload
         self.assertEqual("Hello, Python!", payload)
